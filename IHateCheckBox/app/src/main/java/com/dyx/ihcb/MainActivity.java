@@ -8,7 +8,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.dyx.ihcb.adapter.MyAdapter;
 import com.dyx.ihcb.model.ModelRoot;
@@ -23,6 +22,7 @@ import butterknife.ButterKnife;
 public class MainActivity extends Activity {
     @Bind(R.id.ll_root)
     LinearLayout llRoot;
+    public static final int LIMIT_COUNT=2;
 
 
     @Override
@@ -52,16 +52,10 @@ public class MainActivity extends Activity {
 
                     MyAdapter adapter = new MyAdapter(MainActivity.this, groupsBeen.get(i).getGoodsList());
                     mRecycler_view.setAdapter(adapter);
-                    adapter.setOnCbClickListener(new MyAdapter.OnCbClickListener() {
-                        @Override
-                        public void onItemClick(int index, boolean isSelcted) {
-                            if (isSelcted) {
-                                Toast.makeText(MainActivity.this, "选中", Toast.LENGTH_SHORT).show();
-                            } else {
-                                Toast.makeText(MainActivity.this, "取消", Toast.LENGTH_SHORT).show();
-                            }
-                        }
-                    });
+                    /**
+                     * TODO 点击事件
+                     */
+
                     llRoot.addView(view);
                 }
             }
