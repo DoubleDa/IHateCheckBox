@@ -22,7 +22,7 @@ import butterknife.ButterKnife;
 public class MainActivity extends Activity {
     @Bind(R.id.ll_root)
     LinearLayout llRoot;
-    public static final int LIMIT_COUNT=2;
+    public static final int LIMIT_COUNT = 2;
 
 
     @Override
@@ -50,7 +50,7 @@ public class MainActivity extends Activity {
                     manager.setOrientation(LinearLayoutManager.HORIZONTAL);
                     mRecycler_view.setLayoutManager(manager);
 
-                    MyAdapter adapter = new MyAdapter(MainActivity.this, groupsBeen.get(i).getGoodsList());
+                    MyAdapter adapter = new MyAdapter(MainActivity.this, i,groupsBeen.get(i).getGoodsList());
                     mRecycler_view.setAdapter(adapter);
                     /**
                      * TODO 点击事件

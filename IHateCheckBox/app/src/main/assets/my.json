@@ -127,6 +127,82 @@
           }
         ],
         "Prompt": "分组二沙拉配蔬菜最多只能选择2个商品"
+      },{
+        "groupId": 2,
+        "packageId": 1,
+        "groupName": "分组二沙拉配蔬菜",
+        "groupDesc": "分组二描述",
+        "goodsCount": 3,
+        "enable": 1,
+        "selectedCount": 2,
+        "GoodsList": [
+          {
+            "groupGoodsId": 813,
+            "groupId": 2,
+            "goodsGuid": "0045539d-a13e-4b2c-aa37-dc3789926685",
+            "goodsName": "金吉达意式沙拉汁",
+            "display": 1,
+            "price": 20,
+            "icon": null
+          },
+          {
+            "groupGoodsId": 807,
+            "groupId": 1,
+            "goodsGuid": "004ff9fa-ce2d-443a-a6ee-ee7baca598ce",
+            "goodsName": "黄鱼鲞250g",
+            "display": 1,
+            "price": 20.19,
+            "icon": "http://58.247.11.230:6200/upload/4b4de546-8130-4be4-a43a-f889a0aa8e77.jpg"
+          },
+          {
+            "groupGoodsId": 809,
+            "groupId": 1,
+            "goodsGuid": "0048b6c7-e30e-4dd7-977f-6a05191815f9",
+            "goodsName": "达能碧悠醇品时刻黄桃果粒乳125g*4杯",
+            "display": 1,
+            "price": 18.8,
+            "icon": null
+          },
+          {
+            "groupGoodsId": 815,
+            "groupId": 2,
+            "goodsGuid": "3c3cfb73-62a8-4111-8a76-d95512a6419e",
+            "goodsName": "西兰花块350g",
+            "display": 1,
+            "price": 10,
+            "icon": "http://img.i-kitchen.cn/upload/05a55171-0518-4182-9c7e-9fd35eccd6d0.jpg"
+          },
+          {
+            "groupGoodsId": 817,
+            "groupId": 2,
+            "goodsGuid": "049321b5-fc52-4851-bb29-f0057fff689a",
+            "goodsName": "桂冠奶黄包180g",
+            "display": 1,
+            "price": 5.71,
+            "icon": "http://58.247.11.230:6200/upload/f201e9ac-755b-4c7e-9fb1-5269da768733.jpg"
+          }
+        ],
+        "Prompt": "分组二沙拉配蔬菜最多只能选择2个商品"
+      },{
+        "groupId": 2,
+        "packageId": 1,
+        "groupName": "分组二沙拉配蔬菜",
+        "groupDesc": "分组二描述",
+        "goodsCount": 3,
+        "enable": 1,
+        "selectedCount": 2,
+        "GoodsList": [
+          {
+            "groupGoodsId": 813,
+            "groupId": 2,
+            "goodsGuid": "0045539d-a13e-4b2c-aa37-dc3789926685",
+            "goodsName": "金吉达意式沙拉汁",
+            "display": 1,
+            "price": 20,
+            "icon": null
+          }
+        ],
+        "Prompt": "分组二沙拉配蔬菜最多只能选择2个商品"
       }
     ],
     "Carousel": [

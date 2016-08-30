@@ -29,10 +29,16 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     private Context mContext;
     private List<ModelRoot.DataBean.GroupsBean.GoodsListBean> mDatas;
     private OnCbClickListener OnCbClickListener;
+    private OnMySelectedListener mOnMySelectedListener;
     public SparseArray<Boolean> ischeckArray;
     public SparseArray<CheckBox> listbox;
     private boolean selectedState = false;
+    private boolean isOk = false;
+    private int row;
 
+    public interface OnMySelectedListener {
+        void onItemClick(int rowNum, int indexNum, boolean isSelected);
+    }
 
     public void setOnCbClickListener(MyAdapter.OnCbClickListener onCbClickListener) {
         OnCbClickListener = onCbClickListener;
@@ -42,9 +48,10 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         void onItemClick(int index);
     }
 
-    public MyAdapter(Context mContext, List<ModelRoot.DataBean.GroupsBean.GoodsListBean> mDatas) {
+    public MyAdapter(Context mContext, int row, List<ModelRoot.DataBean.GroupsBean.GoodsListBean> mDatas) {
         this.mContext = mContext;
         this.mDatas = mDatas;
+        this.row = row;
         ischeckArray = new SparseArray<>();
         listbox = new SparseArray<>();
     }
@@ -106,9 +113,17 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
                 if (!ischeckArray.get(position, false)) {
                     ischeckArray.put(position, true);
                     addCheckArray();
+                    if (mOnMySelectedListener != null) {
+                        if (!isOk) {
+                            mOnMySelectedListener.onItemClick(row, position, true);
+                        }
+                    }
                 } else {
                     ischeckArray.put(position, false);
                     deleteCheckArray();
+                    if (mOnMySelectedListener != null) {
+                        mOnMySelectedListener.onItemClick(row, position, false);
+                    }
                 }
             }
             SetSelectedState(listbox.get(position), ischeckArray.get(position));
@@ -132,25 +147,34 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
      * 添加处理函数
      */
     private void addCheckArray() {
-        int limit = MainActivity.LIMIT_COUNT;
-        int size = ischeckArray.size();
-        int count = -1;
-        for (int i = 0; i < size; i++) {
-            boolean isCheck = ischeckArray.get(i);
-            if (isCheck) {
-                count++;
-            }
-        }
-        Logger.d(count);
-        if (count == limit) {
+        try {
+            int limit = MainActivity.LIMIT_COUNT;
+            int size = ischeckArray.size();
+            int count = -1;
             for (int i = 0; i < size; i++) {
-                CheckBox checkBox = listbox.get(i);
-                if (!checkBox.isChecked()) {
-                    ischeckArray.put(i, false);
-                    checkBox.setBackgroundResource(R.mipmap.checkbox_empty);
-                    Toast.makeText(mContext, "这个不可选哦！", Toast.LENGTH_SHORT).show();
+                boolean isCheck = ischeckArray.get(i);
+                if (isCheck) {
+                    count++;
                 }
             }
+            Logger.d(count);
+            if (count == limit) {
+                isOk = true;
+                for (int i = 0; i < size; i++) {
+                    CheckBox checkBox = listbox.get(i);
+                    if (!checkBox.isChecked()) {
+                        ischeckArray.put(i, false);
+                        checkBox.setBackgroundResource(R.mipmap.checkbox_empty);
+                        Toast.makeText(mContext, "这个不可选哦！", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            } else if (count < limit) {
+                isOk = false;
+            } else if (count > limit) {
+                isOk = false;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
